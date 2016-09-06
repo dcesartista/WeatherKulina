@@ -1,11 +1,12 @@
 package id.kulina.exercise.kulinaexecise.POJO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by ACER on 9/6/2016.
  */
-public class Forecasts {
+public class Forecasts implements Serializable{
     private City city;
     private String cod;
     private double message;

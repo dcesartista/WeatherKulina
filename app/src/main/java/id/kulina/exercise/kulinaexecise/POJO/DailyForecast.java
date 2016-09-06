@@ -1,11 +1,12 @@
 package id.kulina.exercise.kulinaexecise.POJO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by ACER on 9/6/2016.
  */
-public class DailyForecast {
+public class DailyForecast implements Serializable{
     private int dt;
     private Temperature temp;
     private float pressure;
@@ -104,120 +105,6 @@ public class DailyForecast {
     }
 }
 
-class Weather{
-    private int id;
-    private String main;
-    private String description;
-    private String icon;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getMain() {
-        return main;
-    }
-
-    public void setMain(String main) {
-        this.main = main;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    @Override
-    public String toString() {
-        return "Weather{" +
-               "id=" + id +
-               ", main='" + main + '\'' +
-               ", description='" + description + '\'' +
-               ", icon='" + icon + '\'' +
-               '}';
-    }
-}
-
-class Temperature{
-    private float day;
-    private float min;
-    private float max;
-    private float night;
-    private float eve;
-    private float morn;
-
-    public float getDay() {
-        return day;
-    }
-
-    public void setDay(float day) {
-        this.day = day;
-    }
-
-    public float getMin() {
-        return min;
-    }
-
-    public void setMin(float min) {
-        this.min = min;
-    }
-
-    public float getMax() {
-        return max;
-    }
-
-    public void setMax(float max) {
-        this.max = max;
-    }
-
-    public float getNight() {
-        return night;
-    }
-
-    public void setNight(float night) {
-        this.night = night;
-    }
-
-    public float getEve() {
-        return eve;
-    }
-
-    public void setEve(float eve) {
-        this.eve = eve;
-    }
-
-    public float getMorn() {
-        return morn;
-    }
-
-    public void setMorn(float morn) {
-        this.morn = morn;
-    }
-
-    @Override
-    public String toString() {
-        return "Temperature{" +
-               "day=" + day +
-               ", min=" + min +
-               ", max=" + max +
-               ", night=" + night +
-               ", eve=" + eve +
-               ", morn=" + morn +
-               '}';
-    }
-}
