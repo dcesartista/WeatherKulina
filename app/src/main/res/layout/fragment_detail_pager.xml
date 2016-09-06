@@ -1,0 +1,124 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal"
+	tools:context="id.kulina.exercise.kulinaexecise.Activity.Fragment_Detail.DetailPagerFragment">
+
+	<FrameLayout
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_gravity="center">
+			<TextView
+				android:id="@+id/Title1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="morning"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+			<TextView
+				android:id="@+id/Desc1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="30"
+				android:textSize="18sp"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Light.ttf"/>
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<View
+		android:layout_width="1dp"
+		android:layout_height="match_parent"
+		android:layout_marginTop="40dp"
+		android:layout_marginBottom="40dp"
+		android:background="@color/colorText"/>
+
+	<FrameLayout
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_gravity="center">
+			<TextView
+				android:id="@+id/Title2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="evening"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+			<TextView
+				android:id="@+id/Desc2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="30"
+				android:textColor="@color/colorText"
+				android:textSize="18sp"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Light.ttf"/>
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<View
+		android:layout_width="1dp"
+		android:layout_height="match_parent"
+		android:layout_marginTop="40dp"
+		android:layout_marginBottom="40dp"
+		android:background="@color/colorText"/>
+
+	<FrameLayout
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_gravity="center">
+			<TextView
+				android:id="@+id/Title3"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="night"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+			<TextView
+				android:id="@+id/Desc3"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="30"
+				android:textColor="@color/colorText"
+				android:textSize="18sp"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Light.ttf"/>
+		</LinearLayout>
+
+	</FrameLayout>
+
+</LinearLayout>

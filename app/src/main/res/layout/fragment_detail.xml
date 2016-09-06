@@ -1,0 +1,157 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@color/colorPrimary"
+	tools:context=".Activity.Fragment_Detail.DetailActivityFragment"
+	tools:showIn="@layout/activity_detail">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="2"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="3"
+				android:text="30"
+				android:textSize="96sp"
+				android:gravity="right"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Semibold.ttf"
+			/>
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:paddingBottom="32dp"
+				android:text="@string/celcius"
+				android:textSize="32sp"
+				android:textColor="@color/colorText"
+				android:gravity="bottom"/>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="2"
+			android:paddingLeft="16dp"
+			android:paddingTop="16dp"
+			android:paddingBottom="20dp">
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:text="max"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="2"
+				android:text="30"
+				android:textSize="20sp"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Light.ttf"
+				/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:text="min"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="2"
+				android:text="30"
+				android:textSize="20sp"
+				android:textColor="@color/colorText"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Light.ttf"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="2"
+		android:orientation="vertical">
+		<ImageView 
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="3"
+			android:src="@drawable/ex"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Sunday"
+			android:textColor="@color/colorText"
+			android:textSize="32sp"
+			android:gravity="center|top"
+			tools:ignore ="MissingPrefix"
+			fontPath="fonts/OpenSans-Light.ttf"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:text="06/09/2016"
+			android:textColor="@color/colorText"
+			android:gravity="center_horizontal"
+			android:textSize="18sp"
+			tools:ignore ="MissingPrefix"
+			fontPath="fonts/OpenSans-Bold.ttf"/>
+
+	</LinearLayout>
+
+	<android.support.v4.view.ViewPager
+		android:id="@+id/detailPager"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+
+	</android.support.v4.view.ViewPager>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="0.3">
+		<View
+			android:id="@+id/indicator2"
+			android:layout_width="15dp"
+			android:layout_height="3dp"
+			android:layout_marginRight="8dp"
+			android:layout_marginLeft="8dp"
+			android:background="@drawable/pager_indicator"
+			android:layout_centerHorizontal="true"/>
+		<View
+			android:id="@+id/indicator1"
+			android:layout_width="15dp"
+			android:layout_height="3dp"
+			android:background="@drawable/pager_indicator_selected"
+			android:layout_toLeftOf="@id/indicator2"/>
+		<View
+			android:id="@+id/indicator3"
+			android:layout_width="15dp"
+			android:layout_height="3dp"
+			android:background="@drawable/pager_indicator"
+			android:layout_toRightOf="@id/indicator2"/>
+
+	</RelativeLayout>
+
+
+</LinearLayout>
