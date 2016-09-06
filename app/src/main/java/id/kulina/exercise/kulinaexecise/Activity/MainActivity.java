@@ -1,9 +1,12 @@
-package id.kulina.exercise.kulinaexecise;
+package id.kulina.exercise.kulinaexecise.Activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import id.kulina.exercise.kulinaexecise.BaseActivity;
+import id.kulina.exercise.kulinaexecise.R;
 
 public class MainActivity extends BaseActivity {
 
@@ -37,4 +40,5 @@ public class MainActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

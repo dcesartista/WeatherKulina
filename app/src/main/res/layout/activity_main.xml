@@ -6,7 +6,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:fitsSystemWindows="true"
-	tools:context="id.kulina.exercise.kulinaexecise.MainActivity">
+	tools:context=".Activity.MainActivity">
 
 	<android.support.design.widget.AppBarLayout
 		android:layout_width="match_parent"
@@ -23,7 +23,7 @@
 	</android.support.design.widget.AppBarLayout>
 
 	<fragment android:id="@+id/fragment"
-		android:name="id.kulina.exercise.kulinaexecise.MainActivityFragment"
+		android:name="id.kulina.exercise.kulinaexecise.Activity.Fragment_Main.MainActivityFragment"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
