@@ -1,8 +1,10 @@
 package id.kulina.exercise.kulinaexecise.Activity.Fragment_Main;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -17,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import id.kulina.exercise.kulinaexecise.API.GetWeatherAPI;
+import id.kulina.exercise.kulinaexecise.Activity.DetailActivity;
 import id.kulina.exercise.kulinaexecise.App;
 import id.kulina.exercise.kulinaexecise.POJO.Forecasts;
 import id.kulina.exercise.kulinaexecise.R;
@@ -30,10 +33,17 @@ import retrofit2.Response;
 public class DialogInputCity extends DialogFragment {
     private static final String TAG = DialogInputCity.class.getSimpleName();
 
+    Activity activity;
+
     public DialogInputCity() {
-        // Required empty public constructor
+
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = activity;
+    }
 
     @NonNull
     @Override
@@ -74,7 +84,9 @@ public class DialogInputCity extends DialogFragment {
             @Override
             public void onResponse(Call<Forecasts> call, Response<Forecasts> response) {
                 Forecasts forecasts = response.body();
-                Log.v(TAG, response.body().toString());
+                Intent intent = new Intent(activity, DetailActivity.class);
+                intent.putExtra(MainActivityFragment.EXTRA_FORECASTS,forecasts);
+                activity.startActivity(intent);
             }
 
             @Override

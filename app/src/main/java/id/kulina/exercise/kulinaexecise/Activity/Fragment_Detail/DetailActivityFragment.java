@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import id.kulina.exercise.kulinaexecise.Activity.Fragment_Main.MainActivityFragment;
+import id.kulina.exercise.kulinaexecise.POJO.Forecasts;
 import id.kulina.exercise.kulinaexecise.R;
 
 /**
@@ -26,6 +28,7 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
     View rootView, indicator1, indicator2, indicator3;
     ViewPager viewPager;
     DetailsPagerAdapter pagerAdapter;
+    Forecasts forecasts;
 
     public DetailActivityFragment() {
     }
@@ -38,6 +41,9 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = simpleDateFormat.format(date);
         Log.v(TAG, formattedDate);
+
+        forecasts = (Forecasts) getActivity().getIntent().getSerializableExtra(MainActivityFragment.EXTRA_FORECASTS);
+        Log.v(TAG,forecasts.toString());
 
         initUIComponent();
 

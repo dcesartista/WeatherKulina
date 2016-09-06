@@ -1,6 +1,7 @@
 package id.kulina.exercise.kulinaexecise.Activity.Fragment_Main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import id.kulina.exercise.kulinaexecise.API.GetWeatherAPI;
+import id.kulina.exercise.kulinaexecise.Activity.DetailActivity;
 import id.kulina.exercise.kulinaexecise.App;
 import id.kulina.exercise.kulinaexecise.POJO.Forecasts;
 import id.kulina.exercise.kulinaexecise.R;
@@ -31,6 +33,7 @@ import retrofit2.Response;
  */
 public class MainActivityFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = MainActivityFragment.class.getSimpleName();
+    public static final String EXTRA_FORECASTS = "Forecasts";
 
     private View rootView;
     private Button inputCity, currentLoc;
@@ -94,7 +97,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
             @Override
             public void onResponse(Call<Forecasts> call, Response<Forecasts> response) {
                 Forecasts forecasts = response.body();
-                Log.v(TAG, response.body().toString());
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra(EXTRA_FORECASTS,forecasts);
+                getContext().startActivity(intent);
             }
 
             @Override
