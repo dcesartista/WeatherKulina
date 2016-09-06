@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,6 +49,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     private void initUIComponent(){
         inputCity = (Button) rootView.findViewById(R.id.btn_input_city);
+        inputCity.setOnClickListener(this);
         currentLoc = (Button) rootView.findViewById(R.id.btn_current_loc);
         currentLoc.setOnClickListener(this);
     }
@@ -56,6 +58,9 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case (R.id.btn_input_city):
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                DialogInputCity inputCityDialog = new DialogInputCity();
+                inputCityDialog.show(fragmentManager, "dialog");
                 break;
             case (R.id.btn_current_loc):
                 if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
@@ -74,6 +79,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     }
 
     private void getForecast(double lat, double lon){
+
         Map<String,String> params= new HashMap<>();
         params.put("lat",String.valueOf(lat));
         params.put("lon",String.valueOf(lon));
@@ -88,6 +94,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
             @Override
             public void onResponse(Call<Forecasts> call, Response<Forecasts> response) {
                 Forecasts forecasts = response.body();
+                Log.v(TAG, response.body().toString());
             }
 
             @Override

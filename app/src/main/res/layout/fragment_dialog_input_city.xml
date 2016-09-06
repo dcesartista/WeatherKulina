@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="180dp"
+	android:orientation="vertical"
+	android:layout_marginRight="24dp"
+	android:layout_marginLeft="24dp"
+	tools:context="id.kulina.exercise.kulinaexecise.Activity.Fragment_Main.DialogInputCity">
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:text="Enter City Name"
+		android:textSize="24sp"
+		android:gravity="center_vertical"
+		android:paddingLeft="16dp"/>
+
+	<EditText
+		android:id="@+id/et_city_name"
+		android:layout_width="match_parent"
+		android:layout_height="48dp"
+		android:layout_marginTop="4dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginBottom="4dp"
+		android:hint="City Name"
+		/>
+
+</LinearLayout>
