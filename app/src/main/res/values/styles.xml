@@ -17,10 +17,5 @@
 	<style name="AppTheme.PopupOverlay"
 		parent="ThemeOverlay.AppCompat.Light"/>
 
-	<style name="ProgressDialogFullScreen" parent="Theme.AppCompat" >
-		<item name="colorAccent">@color/colorAccent</item>
-		<item name ="android:background">@drawable/overlay</item>
-		<item name ="android:gravity">center</item>
-	</style>
 
 </resources>

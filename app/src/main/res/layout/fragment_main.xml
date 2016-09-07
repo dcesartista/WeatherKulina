@@ -1,25 +1,76 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:orientation="vertical"
 	tools:context=".Activity.Fragment_Main.MainActivityFragment"
 	tools:showIn="@layout/activity_main">
 
-	<RelativeLayout
+	<ImageView android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_margin="32dp"
+		android:layout_weight="1"
+		android:src="@drawable/sun"/>
+	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginBottom="16dp"
 		android:layout_gravity="center">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="32sp"
+			android:text="Weather"
+			android:textColor="@color/colorText"
+			tools:ignore ="MissingPrefix"
+			fontPath="fonts/OpenSans-ExtraBold.ttf"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="32sp"
+			android:text="App"
+			android:textColor="@color/colorText"
+			tools:ignore ="MissingPrefix"
+			fontPath="fonts/OpenSans-Light.ttf"/>
+	</LinearLayout>
+
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="4dp"
+			android:textSize="20sp"
+			android:text="Forecast today's weather by"
+			android:layout_gravity="center"
+			android:textColor="@color/colorText"/>
 		<Button
 			android:id="@+id/btn_input_city"
 			android:layout_width="200dp"
-			android:layout_height="75dp"
-			android:text="INPUT CITY"/>
+			android:layout_height="60dp"
+			android:textSize="16sp"
+			android:layout_gravity="center"
+			android:text="@string/city_name"
+			style="@style/Widget.AppCompat.Button.Colored"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="4dp"
+			android:layout_marginBottom="4dp"
+			android:text="or"
+			android:gravity="center"
+			tools:ignore ="MissingPrefix"
+			android:textColor="@color/colorText"
+			fontPath="fonts/OpenSans-Bold.ttf"/>
 		<Button
 			android:id="@+id/btn_current_loc"
 			android:layout_below="@id/btn_input_city"
+			android:layout_gravity="center"
 			android:layout_width="200dp"
-			android:layout_height="75dp"
-			android:text="YOUR LOCATION"/>
-	</RelativeLayout>
+			android:layout_height="60dp"
+			android:textSize="16sp"
+			android:layout_marginBottom="75dp"
+			android:text="@string/current_loc"
+			style="@style/Widget.AppCompat.Button.Colored"/>
 
-</FrameLayout>
+</LinearLayout>
