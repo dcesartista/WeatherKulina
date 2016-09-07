@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,6 +37,7 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
     DetailsPagerAdapter pagerAdapter;
     Forecasts forecasts;
     TextView tvTemp, tvTempMax, tvTempMin, tvDay, tvDate, tvWeatherMain, tvWeatherDesc;
+    ImageView ivWeather;
 
     public DetailActivityFragment() {
     }
@@ -67,6 +71,10 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = simpleDateFormat.format(date);
 
+        ivWeather = (ImageView) rootView.findViewById(R.id.iv_weather);
+        Picasso.with(getContext())
+               .load("http://openweathermap.org/img/w/" + weather.getIcon() + ".png")
+                .into(ivWeather);
         tvTemp = (TextView) rootView.findViewById(R.id.tv_temp);
         tvTemp.setText(String.valueOf(temperature.getDay()));
         tvTempMax = (TextView) rootView.findViewById(R.id.tv_max_temp);
