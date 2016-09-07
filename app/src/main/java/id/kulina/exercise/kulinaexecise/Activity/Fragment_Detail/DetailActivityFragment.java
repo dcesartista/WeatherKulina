@@ -9,13 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
 import id.kulina.exercise.kulinaexecise.Activity.Fragment_Main.MainActivityFragment;
+import id.kulina.exercise.kulinaexecise.POJO.DailyForecast;
 import id.kulina.exercise.kulinaexecise.POJO.Forecasts;
+import id.kulina.exercise.kulinaexecise.POJO.Temperature;
+import id.kulina.exercise.kulinaexecise.POJO.Weather;
 import id.kulina.exercise.kulinaexecise.R;
 
 /**
@@ -29,6 +33,7 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
     ViewPager viewPager;
     DetailsPagerAdapter pagerAdapter;
     Forecasts forecasts;
+    TextView tvTemp, tvTempMax, tvTempMin, tvDay, tvDate, tvWeatherMain, tvWeatherDesc;
 
     public DetailActivityFragment() {
     }
@@ -37,14 +42,9 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-        Date date = new Date(time*1000);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = simpleDateFormat.format(date);
-        Log.v(TAG, formattedDate);
 
         forecasts = (Forecasts) getActivity().getIntent().getSerializableExtra(MainActivityFragment.EXTRA_FORECASTS);
         Log.v(TAG,forecasts.toString());
-
         initUIComponent();
 
         return rootView;
@@ -59,6 +59,28 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
         pagerAdapter = new DetailsPagerAdapter(getActivity().getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(this);
+
+        DailyForecast dailyForecast = forecasts.getList().get(0);
+        Temperature temperature = dailyForecast.getTemp();
+        Weather weather = dailyForecast.getWeather().get(0);
+        Date date = new Date(dailyForecast.getDt()*1000);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = simpleDateFormat.format(date);
+
+        tvTemp = (TextView) rootView.findViewById(R.id.tv_temp);
+        tvTemp.setText(String.valueOf(temperature.getDay()));
+        tvTempMax = (TextView) rootView.findViewById(R.id.tv_max_temp);
+        tvTempMax.setText(String.valueOf(temperature.getMax()) + getString(R.string.celcius));
+        tvTempMin = (TextView) rootView.findViewById(R.id.tv_min_temp);
+        tvTempMin.setText(String.valueOf(temperature.getMin()) + getString(R.string.celcius));
+        tvWeatherMain = (TextView) rootView.findViewById(R.id.tv_weather_main);
+        tvWeatherMain.setText(weather.getMain());
+        tvWeatherDesc = (TextView) rootView.findViewById(R.id.tv_weather_desc);
+        tvWeatherDesc.setText(weather.getDescription());
+        tvDay = (TextView) rootView.findViewById(R.id.tv_day);
+        tvDay.setText(getDay(date));
+        tvDate = (TextView) rootView.findViewById(R.id.tv_date);
+        tvDate.setText(formattedDate);
 
     }
 
@@ -104,27 +126,13 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position){
                 case 0:
-                    HashMap<String,String> detail0 = new HashMap<>();
-                    detail0.put("morning","30");
-                    detail0.put("evening","30");
-                    detail0.put("night","30");
-                    return DetailPagerFragment.newInstance(position+1);
+                    return DetailPagerFragment.newInstance(position+1,forecasts);
                 case 1:
-                    HashMap<String,String> detail1 = new HashMap<>();
-                    detail1.put("pressure","30");
-                    detail1.put("wind speed","30");
-                    detail1.put("wind direction","30");
-                    return DetailPagerFragment.newInstance(position+1);
+                    return DetailPagerFragment.newInstance(position+1,forecasts);
                 case 2:
-                    HashMap<String,String> detail2 = new HashMap<>();
-                    detail2.put("humidity","30");
-                    detail2.put("clouds","30");
-                    detail2.put("rain","30");
-                    return  DetailPagerFragment.newInstance(position+1);
+                    return  DetailPagerFragment.newInstance(position+1,forecasts);
             }
             return null;
         }
@@ -132,6 +140,30 @@ public class DetailActivityFragment extends Fragment implements ViewPager.OnPage
         @Override
         public int getCount() {
             return 3;
+        }
+    }
+
+    private String getDay(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int day = cal.get(Calendar.DAY_OF_WEEK);
+        switch (day){
+            case Calendar.MONDAY:
+                return "Monday";
+            case Calendar.TUESDAY:
+                return "Tuesday";
+            case Calendar.WEDNESDAY:
+                return "Wednesday";
+            case Calendar.THURSDAY:
+                return "Thursday";
+            case Calendar.FRIDAY:
+                return "Friday";
+            case Calendar.SATURDAY:
+                return "Saurday";
+            case Calendar.SUNDAY:
+                return "Sunday";
+            default:
+                return "";
         }
     }
 }

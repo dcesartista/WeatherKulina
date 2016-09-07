@@ -15,17 +15,18 @@
 			android:orientation="vertical"
 			android:layout_gravity="center">
 			<TextView
-				android:id="@+id/Title1"
+				android:id="@+id/tv_title1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="center"
 				android:text="morning"
+				android:textSize="12sp"
 				android:textColor="@color/colorText"
 				tools:ignore ="MissingPrefix"
 				fontPath="fonts/OpenSans-Bold.ttf"/>
 			<TextView
-				android:id="@+id/Desc1"
+				android:id="@+id/tv_desc1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -56,17 +57,18 @@
 			android:orientation="vertical"
 			android:layout_gravity="center">
 			<TextView
-				android:id="@+id/Title2"
+				android:id="@+id/tv_title2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="center"
 				android:text="evening"
+				android:textSize="12sp"
 				android:textColor="@color/colorText"
 				tools:ignore ="MissingPrefix"
 				fontPath="fonts/OpenSans-Bold.ttf"/>
 			<TextView
-				android:id="@+id/Desc2"
+				android:id="@+id/tv_desc2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -97,17 +99,18 @@
 			android:orientation="vertical"
 			android:layout_gravity="center">
 			<TextView
-				android:id="@+id/Title3"
+				android:id="@+id/tv_title3"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="center"
 				android:text="night"
+				android:textSize="12sp"
 				android:textColor="@color/colorText"
 				tools:ignore ="MissingPrefix"
 				fontPath="fonts/OpenSans-Bold.ttf"/>
 			<TextView
-				android:id="@+id/Desc3"
+				android:id="@+id/tv_desc3"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"

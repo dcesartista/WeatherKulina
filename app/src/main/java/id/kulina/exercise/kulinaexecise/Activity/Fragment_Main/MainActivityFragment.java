@@ -1,6 +1,8 @@
 package id.kulina.exercise.kulinaexecise.Activity.Fragment_Main;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +40,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     private View rootView;
     private Button inputCity, currentLoc;
+    ProgressDialog progressDialog;
+    Call<Forecasts> call;
 
     public MainActivityFragment() {
     }
@@ -45,6 +50,16 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Forecasting...");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCanceledOnTouchOutside(true);
+        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                call.cancel();
+            }
+        });
         initUIComponent();
 
         return rootView;
@@ -92,10 +107,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         params.put("appid",App.APPID);
 
         GetWeatherAPI getWeatherAPI= GetWeatherAPI.retrofit.create(GetWeatherAPI.class);
-        Call<Forecasts> call = getWeatherAPI.forecasts(params);
+        call = getWeatherAPI.forecasts(params);
+        progressDialog.show();
         call.enqueue(new Callback<Forecasts>() {
             @Override
             public void onResponse(Call<Forecasts> call, Response<Forecasts> response) {
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
                 Forecasts forecasts = response.body();
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra(EXTRA_FORECASTS,forecasts);
@@ -105,6 +124,14 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
             @Override
             public void onFailure(Call<Forecasts> call, Throwable t) {
                 Log.v(TAG, t.toString());
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+                if(t.toString().equals(DialogInputCity.FORECASTING_CANCELLED)){
+                    Toast.makeText(getContext(),"Forecasting cancelled!",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(),"Failed to get weather data. Please check your internet connection!",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -19,7 +19,18 @@
 			android:layout_width="match_parent"
 			android:layout_height="?attr/actionBarSize"
 			android:background="@color/colorPrimary"
-			app:popupTheme="@style/AppTheme.PopupOverlay"/>
+			app:popupTheme="@style/AppTheme.PopupOverlay">
+			<TextView
+				android:id="@+id/tv_title_toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="Asdasdasd"
+				android:textColor="@color/colorText"
+				android:textSize="20sp"
+				android:gravity="center_vertical"
+				tools:ignore ="MissingPrefix"
+				fontPath="fonts/OpenSans-Bold.ttf"/>
+		</android.support.v7.widget.Toolbar>
 
 	</android.support.design.widget.AppBarLayout>
 

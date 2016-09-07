@@ -3,6 +3,7 @@ package id.kulina.exercise.kulinaexecise.Activity.Fragment_Main;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,8 +34,12 @@ import retrofit2.Response;
  */
 public class DialogInputCity extends DialogFragment {
     private static final String TAG = DialogInputCity.class.getSimpleName();
+    private static final String NO_CITY_ERROR = "Invalid double: \"Error: Not found city\"";
+    public static final String FORECASTING_CANCELLED = "java.net.SocketException: Socket closed";
 
     Activity activity;
+    ProgressDialog progressDialog;
+    Call<Forecasts> call;
 
     public DialogInputCity() {
 
@@ -53,6 +59,16 @@ public class DialogInputCity extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_dialog_input_city, null);
         final EditText city = (EditText) view.findViewById(R.id.et_city_name);
+        progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage("Forecasting...");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCanceledOnTouchOutside(true);
+        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                call.cancel();
+            }
+        });
 
         builder.setView(view)
                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -71,6 +87,7 @@ public class DialogInputCity extends DialogFragment {
 
     private void getForecast(String city){
 
+
         Map<String,String> params= new HashMap<>();
         params.put("q",city);
         params.put("cnt",String.valueOf(App.NUM_OF_DAYS_FETCHED));
@@ -79,10 +96,14 @@ public class DialogInputCity extends DialogFragment {
         params.put("appid",App.APPID);
 
         GetWeatherAPI getWeatherAPI= GetWeatherAPI.retrofit.create(GetWeatherAPI.class);
-        Call<Forecasts> call = getWeatherAPI.forecasts(params);
+        call = getWeatherAPI.forecasts(params);
+        progressDialog.show();
         call.enqueue(new Callback<Forecasts>() {
             @Override
             public void onResponse(Call<Forecasts> call, Response<Forecasts> response) {
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
                 Forecasts forecasts = response.body();
                 Intent intent = new Intent(activity, DetailActivity.class);
                 intent.putExtra(MainActivityFragment.EXTRA_FORECASTS,forecasts);
@@ -91,9 +112,21 @@ public class DialogInputCity extends DialogFragment {
 
             @Override
             public void onFailure(Call<Forecasts> call, Throwable t) {
-                Log.v(TAG, t.toString());
+                Log.v(TAG, t.getMessage().toString());
+                if(progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+                if(String.valueOf(t.getMessage()).equals(NO_CITY_ERROR)){
+                    Toast.makeText(activity,"City Name Not Found, Please try another city.",Toast.LENGTH_LONG).show();
+                } else if(t.toString().equals(FORECASTING_CANCELLED)){
+                    Toast.makeText(activity,"Forecasting cancelled!",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(activity,"Failed to get weather data. Please check your internet connection!",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
+        dismiss();
     }
 
 }

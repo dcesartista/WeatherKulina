@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Created by ACER on 9/6/2016.
  */
 public class DailyForecast implements Serializable{
-    private int dt;
+    private long dt;
     private Temperature temp;
     private float pressure;
     private int humidity;
@@ -17,11 +17,11 @@ public class DailyForecast implements Serializable{
     private int clouds;
     private float rain;
 
-    public int getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(int dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 
