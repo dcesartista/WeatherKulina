@@ -85,12 +85,12 @@ public class DetailPagerFragment extends Fragment {
                 tvDesc3.setText(dailyForecast.getDeg() + "°");
                 break;
             case THIRD_PAGER:
-                tvTitle1.setText("morning");
-                tvTitle2.setText("evening");
-                tvTitle3.setText("night");
-                tvDesc1.setText(temperature.getMorn()+getString(R.string.celcius));
-                tvDesc2.setText(temperature.getEve()+getString(R.string.celcius));
-                tvDesc3.setText(temperature.getNight()+getString(R.string.celcius));
+                tvTitle1.setText("humidity");
+                tvTitle2.setText("cloudiness");
+                tvTitle3.setText("rain");
+                tvDesc1.setText(dailyForecast.getHumidity()+"%");
+                tvDesc2.setText(dailyForecast.getClouds()+"%");
+                tvDesc3.setText(dailyForecast.getRain()+"%");
                 break;
         }
 
