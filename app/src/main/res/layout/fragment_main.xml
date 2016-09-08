@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:transitionName="@string/transition_splash"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
@@ -10,11 +11,13 @@
 		android:layout_height="0dp"
 		android:layout_margin="32dp"
 		android:layout_weight="1"
+		android:transitionName="@string/transition_logo"
 		android:src="@drawable/sun"/>
 	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
+		android:transitionName="@string/transition_title"
 		android:layout_marginBottom="16dp"
 		android:layout_gravity="center">
 		<TextView

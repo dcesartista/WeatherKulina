@@ -14,11 +14,7 @@
 		<activity
 			android:name=".Activity.MainActivity"
 			android:theme="@style/AppTheme.NoActionBar">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
 
-				<category android:name="android.intent.category.LAUNCHER"/>
-			</intent-filter>
 		</activity>
 		<activity
 			android:name=".Activity.DetailActivity"
@@ -27,6 +23,16 @@
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value="id.kulina.exercise.kulinaexecise.Activity.MainActivity"/>
+		</activity>
+		<activity
+			android:name=".Activity.SplashScreenActivity"
+			android:theme="@style/AppTheme.NoActionBar"
+			android:noHistory="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
 		</activity>
 	</application>
 
